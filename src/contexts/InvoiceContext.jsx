@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import localforage from 'localforage';
 
-export const InvoiceContext = createContext(); // ✅ MUST export this
+export const InvoiceContext = createContext(); 
 
 const generateId = () => {
   if (typeof crypto !== 'undefined' && crypto.randomUUID) {
