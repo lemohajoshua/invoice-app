@@ -15,14 +15,12 @@ export default function InvoiceDetailPage() {
     return <div className="text-center py-10">Invoice not found</div>;
   }
 
-  // ✅ Safe total calculation
   const total =
     invoice.items?.reduce(
       (sum, item) => sum + item.quantity * item.price,
       0
     ) || 0;
 
-  // ✅ UX FIX: Prevent unnecessary updates
   const handleMarkAsPaid = () => {
     if (invoice.status !== 'pending') return;
     updateInvoice(id, { status: 'paid' });
@@ -36,7 +34,7 @@ export default function InvoiceDetailPage() {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
           Invoice #{invoice.id.slice(0, 8)}
         </h1>
         <StatusBadge status={invoice.status} />
@@ -76,10 +74,10 @@ export default function InvoiceDetailPage() {
             <table className="w-full text-left">
               <thead>
                 <tr className="border-b">
-                  <th>Description</th>
-                  <th>Qty</th>
-                  <th>Price</th>
-                  <th>Total</th>
+                  <th className="text-gray-700 dark:text-gray-300">Description</th>
+                  <th className="text-gray-700 dark:text-gray-300">Qty</th>
+                  <th className="text-gray-700 dark:text-gray-300">Price</th>
+                  <th className="text-gray-700 dark:text-gray-300">Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -108,7 +106,6 @@ export default function InvoiceDetailPage() {
         )}
 
         <div className="flex gap-3 pt-4">
-          {/* ✅ Only show when valid */}
           {invoice.status === 'pending' && (
             <button
               onClick={handleMarkAsPaid}

@@ -15,7 +15,6 @@ export default function InvoiceForm({
   } = useForm({
     resolver: zodResolver(invoiceSchema),
 
-    // ✅ FIX: safer default handling
     defaultValues: defaultValues ?? {
       clientName: '',
       clientEmail: '',
@@ -33,7 +32,6 @@ export default function InvoiceForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      {/* Client Name */}
       <div>
         <label htmlFor="clientName" className="block font-medium mb-1">
           Client Name *
@@ -50,7 +48,6 @@ export default function InvoiceForm({
         )}
       </div>
 
-      {/* Client Email */}
       <div>
         <label htmlFor="clientEmail" className="block font-medium mb-1">
           Client Email *
@@ -68,7 +65,6 @@ export default function InvoiceForm({
         )}
       </div>
 
-      {/* Due Date */}
       <div>
         <label htmlFor="dueDate" className="block font-medium mb-1">
           Due Date *
@@ -86,7 +82,6 @@ export default function InvoiceForm({
         )}
       </div>
 
-      {/* Status (only when editing) */}
       {isEditing && (
         <div>
           <label htmlFor="status" className="block font-medium mb-1">
@@ -104,7 +99,6 @@ export default function InvoiceForm({
         </div>
       )}
 
-      {/* Items */}
       <div>
         <label className="block font-medium mb-2">
           Invoice Items *
@@ -115,7 +109,6 @@ export default function InvoiceForm({
             key={field.id}
             className="border p-4 rounded mb-3 space-y-2"
           >
-            {/* Description */}
             <input
               placeholder="Description"
               {...register(`items.${index}.description`)}
@@ -127,14 +120,13 @@ export default function InvoiceForm({
               </p>
             )}
 
-            {/* Quantity + Price */}
             <div className="flex gap-2">
               <input
                 type="number"
                 placeholder="Quantity"
                 {...register(`items.${index}.quantity`, {
                   valueAsNumber: true,
-                  min: 1, // ✅ FIX
+                  min: 1,
                 })}
                 className="w-1/2 p-2 border rounded dark:bg-gray-800"
               />
@@ -145,7 +137,7 @@ export default function InvoiceForm({
                 step="0.01"
                 {...register(`items.${index}.price`, {
                   valueAsNumber: true,
-                  min: 0, // ✅ FIX
+                  min: 0,
                 })}
                 className="w-1/2 p-2 border rounded dark:bg-gray-800"
               />
@@ -163,7 +155,6 @@ export default function InvoiceForm({
               </p>
             )}
 
-            {/* Remove */}
             <button
               type="button"
               onClick={() => remove(index)}
@@ -174,7 +165,6 @@ export default function InvoiceForm({
           </div>
         ))}
 
-        {/* Add item */}
         <button
           type="button"
           onClick={() =>
@@ -185,7 +175,6 @@ export default function InvoiceForm({
           + Add item
         </button>
 
-        {/* Global error */}
         {errors.items && typeof errors.items.message === 'string' && (
           <p className="text-red-500 text-sm mt-1">
             {errors.items.message}
@@ -193,7 +182,6 @@ export default function InvoiceForm({
         )}
       </div>
 
-      {/* Notes */}
       <div>
         <label htmlFor="notes" className="block font-medium mb-1">
           Notes (optional)
@@ -206,7 +194,6 @@ export default function InvoiceForm({
         />
       </div>
 
-      {/* Actions */}
       <div className="flex gap-3">
         <button
           type="submit"

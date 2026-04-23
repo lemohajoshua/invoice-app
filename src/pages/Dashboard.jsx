@@ -20,12 +20,14 @@ export default function Dashboard() {
     return (
         <div>
             <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold">Invoices</h1>
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Invoices
+            </h1>
             <FilterControls currentFilter={statusFilter} onFilterChange={setStatusFilter} />
         </div>
 
         {filteredInvoices.length === 0 ? (
-        <div className="text-center py-10 text-gray-500">
+        <div className="text-center py-10 text-gray-500 dark:text-gray-400">
           No invoices found. Create your first invoice!
         </div>
       ) : (
