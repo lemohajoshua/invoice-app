@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useInvoices } from '../hooks/useInvoices';
-// import { useTheme } from '../hooks/useTheme';
 import InvoiceCard from '../components/invoices/InvoiceCard';
 import FilterControls from '../components/invoices/FilterControls';
 

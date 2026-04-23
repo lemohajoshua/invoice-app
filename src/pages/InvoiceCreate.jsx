@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useInvoices } from '../contexts/InvoiceContext';
+import { useInvoices } from '../hooks/useInvoices';
 import InvoiceForm from '../components/invoices/InvoiceForm';
 
 export default function InvoiceCreate() {

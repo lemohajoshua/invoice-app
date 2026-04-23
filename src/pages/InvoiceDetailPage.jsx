@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useInvoices } from '../contexts/InvoiceContext';
+import { useInvoices } from '../hooks/useInvoices';
 import StatusBadge from '../components/common/StatusBadge';
 import { useState } from 'react';
 import DeleteConfirmModal from '../components/common/Modal';
